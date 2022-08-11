@@ -1,0 +1,30 @@
+@import "./_variables.scss";
+@import "./_mixins.scss";
+
+.btn {
+  @include btn;
+  @include btnText;
+  @include btnIcon;
+}
+
+.width-icon {
+  width: $widthIcon;
+}
+
+.width-just-icon {
+  width: $widthJustIcon;
+}
+
+@each $name in $btn-names {
+  .btn-#{$name} {
+    @include btn-class($name);
+  }
+  .btn-#{$name}-enabled {
+    @include btn-class-enabled($name);
+  }
+}
+
+.btn-disabled {
+  opacity: 0.38;
+  cursor: no-drop;
+}

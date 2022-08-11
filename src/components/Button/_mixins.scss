@@ -1,0 +1,95 @@
+//mixins
+@mixin btn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width: 90px;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    box-shadow: 0px 0px 0px 3px rgba(108, 132, 250, 0.2);
+  }
+}
+
+@mixin btnText {
+  .btnText {
+    width: 58px;
+    height: 24px;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@mixin btnIcon {
+  .btnIcon {
+    font-size: 20px;
+  }
+}
+
+@mixin btn-class($name) {
+  @if $name == primary {
+    color: $primaryTextColor;
+    background: $primaryColor;
+  } @else if $name == secondary {
+    color: $secondaryTextColor;
+    background: $secondaryColor;
+  } @else if $name == variant {
+    color: $variantTextColor;
+    background: $variantColor;
+  } @else if $name == bordered {
+    border: 2px solid $primaryColor;
+    color: $borderedTextColor;
+    background: $borderedColor;
+  }
+}
+
+@mixin btn-class-enabled($name) {
+  @if $name == primary {
+    &:hover {
+      background: $primaryHoverColor;
+    }
+
+    &:active {
+      background: $primaryPressedColor;
+    }
+  } @else if $name == secondary {
+    &:hover {
+      background: $secondaryHoverColor;
+    }
+
+    &:active {
+      background: $secondaryPressedColor;
+    }
+  } @else if $name == variant {
+    &:hover {
+      background: $variantHoverColor;
+      color: $variantHoverTextColor;
+    }
+
+    &:active {
+      background: $variantPressedColor;
+    }
+  } @else if $name == bordered {
+    &:hover {
+      background: $borderedHoverColor;
+      color: $primaryColor;
+    }
+
+    &:focus {
+      background: $borderedFocusColor;
+    }
+
+    &:active {
+      border: 2px solid $borderedPressedColor;
+      background: $borderedColor;
+      color: $borderedPressedColor;
+    }
+  }
+}
